@@ -4,3 +4,6 @@ data/
 input/*.csv
 sql/*.db
 kaggle/
+cred/
+kaggle.json
+.kaggle/

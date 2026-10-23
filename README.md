@@ -1,4 +1,4 @@
-# UniProt Protein Localization: ETL and Classification
+# Protein Localization: ETL and Classification
 
 ![Python](https://img.shields.io/badge/Python-3.11+-3776AB?logo=python&logoColor=white)
 ![pandas](https://img.shields.io/badge/pandas-ETL-150458?logo=pandas&logoColor=white)
@@ -11,7 +11,7 @@
 ![Kaggle](https://img.shields.io/badge/Kaggle-Datasets-20BEFF?logo=kaggle&logoColor=white)
 ![Status](https://img.shields.io/badge/Status-In%20Progress-yellow)
 
-![]("img\2cover_title.gif")
+![](https://github.com/RafaelGallo/bioinfo_protein_ETL/blob/main/img/log1.jpg?raw=true)
 
 An end-to-end ETL pipeline that builds machine-learning-ready datasets from the
 [UniProt](https://www.uniprot.org) protein knowledgebase, plus baseline models that
@@ -295,6 +295,6 @@ Add a `LICENSE` file to the repository root.
 
 **Rafael**, data scientist based in Sao Paulo, Brazil.
 
-- GitHub: [@YOUR_USER](https://github.com/RafaelGallo)
-- Kaggle: [YOUR_KAGGLE_USER](https://www.kaggle.com/gallo33henrique)
-- LinkedIn: [your-profile](https://www.linkedin.com/in/rafael-g-986a73150/)
+- GitHub: [@Rafael Gallo](https://github.com/RafaelGallo)
+- Kaggle: [Rafael Gallo](https://www.kaggle.com/gallo33henrique)
+- LinkedIn: [Rafael Gallo](https://www.linkedin.com/in/rafael-g-986a73150/)

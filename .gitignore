@@ -1,6 +1,6 @@
 ﻿.venv/
 __pycache__/
 data/
-input/
+input/*.csv
 sql/*.db
 kaggle/

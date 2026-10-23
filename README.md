@@ -106,8 +106,10 @@ bioinfo_protein_ETL/
     sql/
         query.sql            example queries
         uniprot.db           SQLite database (generated, not versioned)
-    Dockerfile               container image
-    docker-compose.yml       runs the container with the project folders mounted
+    docker/
+        Dockerfile               container image
+        Dockerfile.dockerignore  files left out of the image
+        docker-compose.yml       runs the container with the project folders mounted
     requirements.txt
 ```
 
@@ -295,15 +297,17 @@ The image installs the dependencies from `requirements.txt` and runs on CPU. Dat
 results are mounted as volumes, so they stay on your machine and are not baked into the image.
 
 ```bash
-docker compose build
+docker compose -f docker/docker-compose.yml build
 
 # default command: predict the new proteins (py/predict.py)
-docker compose run --rm etl
+docker compose -f docker/docker-compose.yml run --rm etl
 
 # any other script
-docker compose run --rm etl python main.py --list
-docker compose run --rm etl python py/create_target.py
+docker compose -f docker/docker-compose.yml run --rm etl python main.py --list
+docker compose -f docker/docker-compose.yml run --rm etl python py/create_target.py
 ```
+
+The Docker files live in `docker/`; the build context is the project root.
 
 What works out of the box after cloning the repository:
 

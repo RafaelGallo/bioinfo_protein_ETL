@@ -25,7 +25,7 @@ from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import StandardScaler
 
 # project folders / pastas do projeto
-base_dir = Path(r"C:\Users\rafae\Documents\Projetos_data_science_IA\ETL\uniprot")
+base_dir = Path(__file__).resolve().parent.parent
 data_file = base_dir / "data" / "uniprot_target.csv"
 output_dir = base_dir / "output"
 output_dir.mkdir(parents=True, exist_ok=True)

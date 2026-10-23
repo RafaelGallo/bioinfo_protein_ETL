@@ -14,7 +14,7 @@ from tqdm.auto import tqdm
 from urllib3.util.retry import Retry
 
 # project folders / pastas do projeto
-base_dir = Path(r"C:\Users\rafae\Documents\Projetos_data_science_IA\ETL\uniprot")
+base_dir = Path(__file__).resolve().parent.parent
 input_dir = base_dir / "input"
 output_file = input_dir / "uniprot_new.csv"
 input_dir.mkdir(parents=True, exist_ok=True)

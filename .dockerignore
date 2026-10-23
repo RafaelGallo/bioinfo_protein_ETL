@@ -1,0 +1,16 @@
+.git
+.gitignore
+.venv
+__pycache__
+*.pyc
+kaggle
+img
+README.md
+
+# data and results are mounted as volumes, not baked into the image
+# dados e resultados entram como volumes, não dentro da imagem
+input
+data
+output
+sql/*.db
+models

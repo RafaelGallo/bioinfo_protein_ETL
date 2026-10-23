@@ -12,14 +12,20 @@ from pathlib import Path
 import pandas as pd
 
 # project folders / pastas do projeto
-base_dir = Path(r"C:\Users\rafae\Documents\Projetos_data_science_IA\ETL\uniprot")
+base_dir = Path(__file__).resolve().parent.parent
 data_dir = base_dir / "data"
 sql_dir = base_dir / "sql"
 input_file = data_dir / "uniprot_raw.parquet"
 output_parquet = data_dir / "uniprot_target.parquet"
 output_csv = data_dir / "uniprot_target.csv"
 db_file = sql_dir / "uniprot.db"
+data_dir.mkdir(parents=True, exist_ok=True)
 sql_dir.mkdir(parents=True, exist_ok=True)
+
+# the raw parquet may live in input when data was cloned from github
+# o parquet bruto pode estar em input quando os dados vieram do github
+if not input_file.exists():
+    input_file = base_dir / "input" / "uniprot_raw.parquet"
 
 # location of interest and its regex, change to build another target
 # localização de interesse e seu regex, troque para criar outro alvo

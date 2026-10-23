@@ -12,7 +12,7 @@ import pyarrow.parquet as pq
 from tqdm.auto import tqdm
 
 # project folders / pastas do projeto
-base_dir = Path(r"C:\Users\rafae\Documents\Projetos_data_science_IA\ETL\uniprot")
+base_dir = Path(__file__).resolve().parent.parent
 input_dir = base_dir / "input"
 data_dir = base_dir / "data"
 

@@ -25,7 +25,7 @@ from sklearn.model_selection import GroupShuffleSplit
 from xgboost import XGBClassifier
 
 # project folders / pastas do projeto
-base_dir = Path(r"C:\Users\rafae\Documents\Projetos_data_science_IA\ETL\uniprot")
+base_dir = Path(__file__).resolve().parent.parent
 data_file = base_dir / "data" / "uniprot_target.csv"
 output_dir = base_dir / "output"
 sql_dir = base_dir / "sql"

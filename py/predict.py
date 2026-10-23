@@ -13,7 +13,7 @@ import joblib
 import pandas as pd
 
 # project folders / pastas do projeto
-base_dir = Path(r"C:\Users\rafae\Documents\Projetos_data_science_IA\ETL\uniprot")
+base_dir = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(base_dir))
 
 from src.transform import build_features, clean_sequences  # noqa: E402
@@ -23,6 +23,12 @@ model_file = base_dir / "models" / "model_xgb.joblib"
 output_dir = base_dir / "output"
 db_file = base_dir / "sql" / "uniprot.db"
 output_dir.mkdir(parents=True, exist_ok=True)
+db_file.parent.mkdir(parents=True, exist_ok=True)
+
+# the parquet may live in input when data was cloned from github
+# o parquet pode estar em input quando os dados vieram do github
+if not input_file.exists():
+    input_file = base_dir / "input" / "uniprot_new.parquet"
 
 # load the trained model, threshold and feature names / carrega modelo, limiar e nomes das features
 bundle = joblib.load(model_file)

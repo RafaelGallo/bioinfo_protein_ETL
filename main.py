@@ -18,19 +18,16 @@ import time
 from pathlib import Path
 
 # project folders / pastas do projeto
-base_dir = Path(r"C:\Users\rafae\Documents\Projetos_data_science_IA\ETL\uniprot")
+base_dir = Path(__file__).resolve().parent
 
-# scripts folder: uses py if it exists, otherwise src / pasta dos scripts: usa py se existir, senão src
-scripts_dir = base_dir / "py" if (base_dir / "py").exists() else base_dir / "src"
-
-# etl steps in execution order: extract, transform and load
-# etapas do etl em ordem de execução: extração, transformação e carga
+# etl steps in execution order, with the script path relative to the project
+# etapas do etl em ordem de execução, com o caminho do script relativo ao projeto
 pipeline = {
-    "extract": "extract.py",
-    "extract_new": "extract_new.py",
-    "csv_to_parquet": "csv_to_parquet.py",
-    "create_target": "create_target.py",
-    "publish": "publish_kaggle.py",
+    "extract": "src/extract.py",
+    "extract_new": "src/prot.py",
+    "csv_to_parquet": "src/csv_to_parquet.py",
+    "create_target": "py/create_target.py",
+    "publish": "py/publish_kaggle.py",
 }
 
 # the publish step prepares files for public release, so it only runs when requested
@@ -46,11 +43,11 @@ args = parser.parse_args()
 
 # list the steps and exit / lista as etapas e sai
 if args.list:
-    print(f"scripts folder: {scripts_dir}")
+    print(f"project folder: {base_dir}")
     for step, script_name in pipeline.items():
-        found = "found" if (scripts_dir / script_name).exists() else "missing"
+        found = "found" if (base_dir / script_name).exists() else "missing"
         mode = "opt-in" if step in opt_in_steps else "default"
-        print(f"  {step:15s} {script_name:20s} {mode:8s} {found}")
+        print(f"  {step:15s} {script_name:24s} {mode:8s} {found}")
     sys.exit(0)
 
 # decide which steps will run / define quais etapas vão rodar
@@ -61,7 +58,7 @@ else:
 selected = [step for step in selected if step not in args.skip]
 
 print(f"python: {sys.executable}")
-print(f"scripts folder: {scripts_dir}")
+print(f"project folder: {base_dir}")
 print(f"steps to run: {', '.join(selected)}")
 
 # run each step as a separate process / roda cada etapa como um processo separado
@@ -69,7 +66,7 @@ results = {}
 pipeline_start = time.time()
 
 for step in selected:
-    script = scripts_dir / pipeline[step]
+    script = base_dir / pipeline[step]
 
     # skip steps whose script does not exist / pula etapas cujo script não existe
     if not script.exists():

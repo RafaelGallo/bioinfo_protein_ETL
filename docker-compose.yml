@@ -1,0 +1,14 @@
+services:
+  etl:
+    build: .
+    image: uniprot-protein-localization
+    # default command comes from the Dockerfile (py/predict.py)
+    # o comando padrão vem do Dockerfile (py/predict.py)
+    volumes:
+      # results written by the scripts stay on your machine
+      # os resultados gravados pelos scripts ficam na sua máquina
+      - ./input:/app/input
+      - ./data:/app/data
+      - ./models:/app/models
+      - ./output:/app/output
+      - ./sql:/app/sql
